@@ -1,5 +1,8 @@
 package rustrll.sl.com.russiantrello;
 
+import android.support.design.widget.TabLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -14,12 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -54,13 +53,25 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
         return true;
     }
 
@@ -105,20 +116,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_list, container, false);
-//
-//            TextView textView = (TextView) rootView.findViewById(R.id.toolbar);
-//            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
             ListView tasksListView = rootView.findViewById(R.id.tasksListView);
 
             TaskAdapter tasksListAdapter = new TaskAdapter(getActivity().getApplicationContext(), tasksList(getArguments().getInt(ARG_SECTION_NUMBER)));
             tasksListView.setAdapter(tasksListAdapter);
-
             return rootView;
         }
+
 
         public ArrayList<Task> tasksList(int position) {
             switch (position) {
@@ -207,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
+            // Show 3 total pages.
             return 5;
         }
 
@@ -214,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Do rozdzielenia";
+                    return "To Assign";
                 case 1:
                     return "Must";
                 case 2:
