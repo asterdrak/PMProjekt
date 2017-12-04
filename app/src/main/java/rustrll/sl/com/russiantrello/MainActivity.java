@@ -19,7 +19,10 @@ import android.view.ViewGroup;
 
 import android.widget.ListView;
 
+import com.julienvey.trello.domain.Card;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    Trellolizer trellolizer;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -42,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        trellolizer = new Trellolizer();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,7 +68,14 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+
+                String text = "";
+                List<Card> cards = trellolizer.get_cards();
+                for(int i = 0; i < cards.size(); i++) {
+                    text += cards.get(i).getName() + ", ";
+                }
+
+                Snackbar.make(view, text, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
