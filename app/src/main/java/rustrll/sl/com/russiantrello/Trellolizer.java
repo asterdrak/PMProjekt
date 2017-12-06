@@ -27,8 +27,8 @@ public class Trellolizer {
     private class ConnectAndFetchToTrello extends AsyncTask {
         @Override
         protected Board doInBackground(Object[] objects) {
-            trelloKey = "CHANGEME";
-            trelloAccessToken = "CHANGEME";
+            trelloKey = MainActivity.apiKey;
+            trelloAccessToken = MainActivity.apiKey;
             trelloApi = new TrelloImpl(trelloKey, trelloAccessToken);
             board = trelloApi.getBoard("HGd6ZbQ7");
             Log.v(TAG, "index=" + board.getName());
