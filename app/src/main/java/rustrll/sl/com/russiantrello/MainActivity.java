@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     static final public String secretApiKey = "8373585fdd1635ff23cd99aad95e450065c9c7d2d6a7deb691c55af87db5e622";
     static final public String apiKey = "d18619238242c717df349f1a34dbead3";
 
+    DatabaseHelper myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         EditText etToSave = (EditText) findViewById(R.id.editText1);
         String textFromPreferences = getSharedPreferences("accessKey", Activity.MODE_PRIVATE).getString("editText1", "");
         etToSave.setText(textFromPreferences);
+
+        //Database is created with first time you use it. Later same database file is used by Android.
+        myDb = new DatabaseHelper(this);
     }
 
     protected void trelloRedirect(View v){
