@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     static final public String secretApiKey = "8373585fdd1635ff23cd99aad95e450065c9c7d2d6a7deb691c55af87db5e622";
     static final public String apiKey = "d18619238242c717df349f1a34dbead3";
 
-    DatabaseHelper myDb;
+    static public DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

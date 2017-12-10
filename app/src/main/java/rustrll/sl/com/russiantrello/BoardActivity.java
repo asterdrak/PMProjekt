@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.julienvey.trello.domain.Card;
+import com.julienvey.trello.domain.Label;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,8 @@ public class BoardActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private DatabaseHelper database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,16 +62,18 @@ public class BoardActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        trellolizer = new Trellolizer();
+        database = new DatabaseHelper(this);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                trellolizer = new Trellolizer();
                 String text = "";
-                List<Card> cards = trellolizer.get_cards();
-                for(int i = 0; i < cards.size(); i++) {
-                    text += cards.get(i).getName() + ", ";
+
+                List<Task> tasks = database.getAllTasks();
+                for(int i = 0; i < tasks.size(); i++) {
+                    text += tasks.get(i).getName() + ", ";
                 }
 
                 Snackbar.make(view, text, Snackbar.LENGTH_LONG)
