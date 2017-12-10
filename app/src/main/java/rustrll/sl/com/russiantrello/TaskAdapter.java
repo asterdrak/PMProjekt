@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,6 +28,10 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         TextView taskName = (TextView) convertView.findViewById(R.id.taskName);
         TextView taskDueDate = (TextView) convertView.findViewById(R.id.taskDueDate);
 
+        if(task.getMoscow() != "" && task.getMoscow() != null){
+            LinearLayout buttons = (LinearLayout) convertView.findViewById(R.id.buttons);
+            buttons.setVisibility(View.GONE);
+        }
         // Populate the data into the template view using the data object
         taskName.setText(task.getName());
         taskDueDate.setText(task.getDueDate());

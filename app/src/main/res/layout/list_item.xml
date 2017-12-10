@@ -12,4 +12,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DueDate" android:textColor="@android:color/black"/>
+
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/must"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="MUST" />
+
+        <Button
+            android:id="@+id/should"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="COULD" />
+
+        <Button
+            android:id="@+id/could"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SHOULD" />
+
+        <Button
+            android:id="@+id/wont"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="WONT" />
+    </LinearLayout>
 </LinearLayout>

@@ -158,9 +158,9 @@ public class BoardActivity extends AppCompatActivity {
         private ArrayList<Task> wontTasksList() {
             ArrayList tasksList = new ArrayList<Task>();
 
-            tasksList.add(new Task("Zadanie 1", "Do jutra 12:00"));
-            tasksList.add(new Task("Zadanie 2", "Do dziś 13:00"));
-            tasksList.add(new Task("Zadanie 3", "Do jutra 9:00"));
+            tasksList.add(new Task("Zadanie 13", "Do jutra 12:00"));
+            tasksList.add(new Task("Zadanie 14", "Do dziś 13:00"));
+            tasksList.add(new Task("Zadanie 15", "Do jutra 9:00"));
 
             return tasksList;
         }
@@ -199,9 +199,9 @@ public class BoardActivity extends AppCompatActivity {
         private ArrayList<Task> otherTasksList() {
             ArrayList tasksList = new ArrayList<Task>();
 
-            tasksList.add(new Task("Zadanie 13", "Do jutra 12:00"));
-            tasksList.add(new Task("Zadanie 14", "Do dziś 13:00"));
-            tasksList.add(new Task("Zadanie 15", "Do jutra 9:00"));
+            tasksList.add(new Task(1,"Zadanie 1","", "Do jutra 12:00", "wont"));
+            tasksList.add(new Task(2,"Zadanie 2","", "Do dziś 13:00","wont"));
+            tasksList.add(new Task(3,"Zadanie 3","", "Do jutra 9:00","wont"));
 
             return tasksList;
         }
