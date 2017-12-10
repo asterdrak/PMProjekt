@@ -24,27 +24,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="MUST" />
+            android:text="MUST"/>
 
         <Button
             android:id="@+id/should"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="COULD" />
+            android:text="COULD"/>
 
         <Button
             android:id="@+id/could"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SHOULD" />
+            android:text="SHOULD"/>
 
         <Button
             android:id="@+id/wont"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="WONT" />
+            android:text="WONT"/>
     </LinearLayout>
 </LinearLayout>
