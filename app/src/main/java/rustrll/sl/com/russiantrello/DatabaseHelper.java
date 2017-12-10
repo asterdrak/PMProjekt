@@ -98,4 +98,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return tasks;
     }
+
+    public boolean updateTask(Task task){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(TASK_MOSCOW, task.getMoscow());
+        long result = db.update(TABLE_NAME, cv ,"id="+task.getId(),null);
+
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
 }
